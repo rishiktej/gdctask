@@ -34,7 +34,7 @@ function readfilecontent() {
 
 function addTask(priority, task) {
   if (!task) {
-    console.log("Error: Missing task string. Nothing added!");
+    console.log("Error: Missing tasks string. Nothing added!");
     return;
   } else if (priority < 0) {
     console.log("Error: Priority should be greater than or equal to zero");
