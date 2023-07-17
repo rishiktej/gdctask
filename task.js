@@ -34,16 +34,37 @@ function readfilecontent() {
 
 function addTask(priority, task) {
   if (!task) {
-    console.log("Error: Missing tasks string. Nothing added!");
-    return; // Exit the function if no task is provided
+    console.log("Error: Missing task string. Nothing added!");
+    return;
+  } else if (priority < 0) {
+    console.log("Error: Priority should be greater than or equal to zero");
+    return;
   } else if (priority >= 0) {
     const taskLine = `${priority} ${task}\n`;
-    fs.appendFileSync(TASK_FILE, taskLine);
-    console.log(`Added task: "${task}" with priority ${priority}`);
-  } else if (priority < 0) {
-    console.log("Error:priority should be greater then or equal to zero");
+
+    // Read existing tasks from the file
+    let tasks = [];
+    const data = readfilecontent();
+    tasks = data;
+    // Add the new task to the tasks array
+    tasks.push(taskLine);
+
+    // Sort the tasks array based on priority in ascending order
+    tasks.sort((a, b) => {
+      const priorityA = parseInt(a.split(" ")[0]);
+      const priorityB = parseInt(b.split(" ")[0]);
+      return priorityA - priorityB;
+    });
+
+    // Write the sorted tasks to the file
+    try {
+      fs.writeFileSync(TASK_FILE, tasks.join("\n"));
+      console.log(`Added task: "${task}" with priority ${priority}`);
+    } catch (error) {
+      console.log("Error: Unable to write tasks to file");
+    }
   } else {
-    console.log("Error:provided arguments are not invalid!");
+    console.log("Error:provided arguments are invalid!!");
   }
 }
 
