@@ -94,7 +94,7 @@ function markTaskAsDone(index) {
   }
 }
 
-function generateReport() {
+function GenerateReport() {
   const tasks = readfilecontent();
   const completedTasks = fs
     .readFileSync(COMPLETED_FILE, "utf8")
@@ -139,7 +139,7 @@ function taskmanager() {
       PrintUsage();
       break;
     case "report":
-      generateReport();
+      GenerateReport();
       break;
     default:
       PrintUsage();
