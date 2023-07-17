@@ -4,7 +4,7 @@ const path = require("path");
 const TASK_FILE = path.join(__dirname, "task.txt");
 const COMPLETED_FILE = path.join(__dirname, "completed.txt");
 
-function printUsage() {
+function PrintUsage() {
   console.log("Usage :-");
   console.log(
     '$ ./task add 2 hello world    # Add a new item with priority 2 and text "hello world" to the list'
@@ -136,13 +136,13 @@ function taskmanager() {
       markTaskAsDone(doneIndex);
       break;
     case "help":
-      printUsage();
+      PrintUsage();
       break;
     case "report":
       generateReport();
       break;
     default:
-      printUsage();
+      PrintUsage();
       break;
   }
 }
