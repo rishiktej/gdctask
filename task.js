@@ -45,7 +45,7 @@ function addTask(priority, task) {
   }
 }
 
-function listTasks() {
+function listtasks() {
   const tasks = readfilecontent();
   if (tasks.length > 0) {
     const sortedTasks = tasks
@@ -125,7 +125,7 @@ function taskmanager() {
       addTask(priority, task);
       break;
     case "ls":
-      listTasks();
+      listtasks();
       break;
     case "del":
       const deleteIndex = parseInt(args[1], 10);
