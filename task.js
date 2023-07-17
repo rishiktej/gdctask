@@ -79,7 +79,7 @@ function DeleteTask(index) {
     );
   }
 }
-function markTaskDone(index) {
+function markTaskAsDone(index) {
   let tasks = readfilecontent();
   if (index >= 1 && index <= tasks.length) {
     const task = tasks[index - 1];
@@ -133,7 +133,7 @@ function taskmanager() {
       break;
     case "done":
       const doneIndex = parseInt(args[1], 10);
-      markTaskDone(doneIndex);
+      markTaskAsDone(doneIndex);
       break;
     case "help":
       printUsage();
