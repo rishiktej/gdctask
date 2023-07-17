@@ -65,7 +65,7 @@ function listtasks() {
   }
 }
 
-function deleteTask(index) {
+function DeleteTask(index) {
   let tasks = readfilecontent();
   if (index >= 1 && index <= tasks.length) {
     tasks.splice(index - 1, 1);
@@ -129,7 +129,7 @@ function taskmanager() {
       break;
     case "del":
       const deleteIndex = parseInt(args[1], 10);
-      deleteTask(deleteIndex);
+      DeleteTask(deleteIndex);
       break;
     case "done":
       const doneIndex = parseInt(args[1], 10);
