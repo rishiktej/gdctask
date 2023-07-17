@@ -40,8 +40,10 @@ function addTask(priority, task) {
     const taskLine = `${priority} ${task}\n`;
     fs.appendFileSync(TASK_FILE, taskLine);
     console.log(`Added task: "${task}" with priority ${priority}`);
-  } else {
+  } else if (priority < 0) {
     console.log("Error:priority should be greater then or equal to zero");
+  } else {
+    console.log("Error:provided arguments are not correct!");
   }
 }
 
