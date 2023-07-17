@@ -43,7 +43,7 @@ function addTask(priority, task) {
   } else if (priority < 0) {
     console.log("Error:priority should be greater then or equal to zero");
   } else {
-    console.log("Error:provided arguments are not correct!");
+    console.log("Error:provided arguments are not invalid!");
   }
 }
 
@@ -103,10 +103,16 @@ function GenerateReport() {
     .split("\n")
     .filter(Boolean);
   console.log("Pending :", tasks.length);
-  tasks.forEach((task, index, priority) => {
-    const priority1 = task.split(" ", 1)[0];
-    const task1 = task.substring(task.indexOf(" ") + 1);
-    console.log(`${index + 1}. ${task1} [${priority1}]`);
+  const sortedTasks = tasks
+    .map((line) => {
+      const priority = line.split(" ", 1)[0];
+      const task = line.substring(line.indexOf(" ") + 1);
+      return { priority, task };
+    })
+    .sort((a, b) => a.priority - b.priority);
+
+  sortedTasks.forEach((task, index) => {
+    console.log(`${index + 1}. ${task.task} [${task.priority}]`);
   });
 
   console.log("\nCompleted :", completedTasks.length);

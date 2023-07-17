@@ -1,1 +1,3 @@
-
+0 cricket
+10 school
+5 college
