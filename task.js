@@ -73,11 +73,10 @@ function listtasks() {
   if (tasks.length > 0) {
     const sortedTasks = tasks
       .map((line) => {
-        const priority = line.split(" ", 1)[0];
+        const priority = line.split(" ")[0];
         const task = line.substring(line.indexOf(" ") + 1);
         return [priority, task];
       })
-      .sort((a, b) => a[0] - b[0])
       .map(([priority, task]) => `${task} [${priority}]`);
 
     sortedTasks.forEach((task, index) => {
