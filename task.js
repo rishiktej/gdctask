@@ -104,7 +104,7 @@ function DeleteTask(index) {
 }
 function markTaskAsDone(index) {
   let tasks = readfilecontent();
-  if (index >= 0 && index <= tasks.length) {
+  if (index >= 1 && index <= tasks.length) {
     const task = tasks[index - 1];
     tasks.splice(index - 1, 1);
     fs.writeFileSync(TASK_FILE, tasks.join("\n") + "\n", "utf8");
